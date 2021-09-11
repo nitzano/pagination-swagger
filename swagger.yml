@@ -1,4 +1,5 @@
 openapi: 3.0.1
+
 info:
   title: Swagger pagination example
   description: 'This is a sample server for the swagger pagination article'
@@ -12,7 +13,7 @@ externalDocs:
   description: find more
   url: https://github.com/nitzano/pagination-swagger
 servers:
-- url: https://localhost:5000
+- url: https://localhost:8080
 tags:
 - name: dog
   description: Dogs API
@@ -22,7 +23,7 @@ paths:
   /dogs:
     get:
       tags:
-        - dogs
+        - dog
       summary: Find all dogs
       responses:
         200:
@@ -35,6 +36,22 @@ paths:
                 - type: object
                   properties:
                     items: { type: array, items: { $ref: '#/components/schemas/Dog' }  }
+  /cats:
+    get:
+      tags:
+        - cat
+      summary: Find all cats
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResult'   
+                - type: object
+                  properties:
+                    items: { type: array, items: { $ref: '#/components/schemas/Cat' }  }                    
 components:
   schemas:
     Dog:
