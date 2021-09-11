@@ -1,0 +1,59 @@
+openapi: 3.0.1
+info:
+  title: Swagger pagination example
+  description: 'This is a sample server for the swagger pagination article'
+  contact:
+    email: 16689354+nitzano@users.noreply.github.com 
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+externalDocs:
+  description: find more
+  url: https://github.com/nitzano/pagination-swagger
+servers:
+- url: https://localhost:5000
+tags:
+- name: dog
+  description: Dogs API
+- name: cat
+  description: Cats API  
+paths:
+  /dogs:
+    get:
+      tags:
+        - dogs
+      summary: Find all dogs
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResult'   
+                - type: object
+                  properties:
+                    items: { type: array, items: { $ref: '#/components/schemas/Dog' }  }
+components:
+  schemas:
+    Dog:
+      type: object
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        breed: { type: string }
+        owner: { type: string }
+    Cat:
+      type: object
+      properties:
+        name: { type: string }
+        color: { type: string }
+        slave: { type: string }
+    PaginatedResult:
+      type: object
+      properties:
+        page: { type: number }
+        per_page: { type: number }
+        items: { type: array, items: {} }
+        hasNext: { type: boolean } 
