@@ -24,7 +24,7 @@ paths:
     get:
       tags:
         - dog
-      summary: Find all dogs1
+      summary: Find all dogs
       parameters:
         - { in: query, name: page, schema: { type: integer } }
         - { in: query, name: per_page, schema: { type: integer } }
