@@ -26,8 +26,8 @@ paths:
         - dog
       summary: Find all dogs
       parameters:
-        - { in: query, name: page, schema: { type: number } }
-        - { in: query, name: per_page, schema: { type: number } }
+        - { in: query, name: page, schema: { type: integer } }
+        - { in: query, name: per_page, schema: { type: integer } }
       responses:
         200:
           description: success
