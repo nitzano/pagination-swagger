@@ -35,7 +35,10 @@ paths:
                 - $ref: '#/components/schemas/PaginatedResult'   
                 - type: object
                   properties:
-                    items: { type: array, items: { $ref: '#/components/schemas/Dog' }  }
+                    results: 
+                      type: array
+                      items: 
+                        $ref: '#/components/schemas/Dog' 
   /cats:
     get:
       tags:
@@ -51,7 +54,10 @@ paths:
                 - $ref: '#/components/schemas/PaginatedResult'   
                 - type: object
                   properties:
-                    items: { type: array, items: { $ref: '#/components/schemas/Cat' }  }                    
+                    results: 
+                      type: array
+                      items: 
+                        $ref: '#/components/schemas/Cat' 
 components:
   schemas:
     Dog:
@@ -72,5 +78,5 @@ components:
       properties:
         page: { type: number }
         per_page: { type: number }
-        items: { type: array, items: {} }
+        results: { type: array, items: {} }
         hasNext: { type: boolean } 
