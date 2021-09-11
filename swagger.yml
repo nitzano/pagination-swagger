@@ -87,7 +87,10 @@ components:
     PaginatedResult:
       type: object
       properties:
-        page: { type: number }
-        per_page: { type: number }
-        results: { type: array, items: {} }
-        hasNext: { type: boolean } 
+        has_next: { type: boolean, example: true } 
+        has_prev: { type: boolean, example: true }
+        page: { type: number, example: 3 }
+        pages: { type: number, example: 5 }
+        per_page: { type: number, example: 20 }
+        total: { type: number, example: 100 }
+        results: { type: array, items: {} }    
