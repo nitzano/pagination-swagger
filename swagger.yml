@@ -63,16 +63,27 @@ components:
     Dog:
       type: object
       properties:
-        id: { type: integer }
+        id: { type: number }
         name: { type: string }
-        breed: { type: string }
-        owner: { type: string }
+        ownerName: { type: string }
+        favoriteToy: { type: string }
+      example:
+        id: 1
+        name: Spike
+        ownerName: Dave
+        favoriteToy: Ball
     Cat:
       type: object
       properties:
+        id: { type: number }
         name: { type: string }
-        color: { type: string }
-        slave: { type: string }
+        servantName: { type: string }
+        favoriteFish: { type: string }
+      example:
+        id: 4
+        name: Sushi
+        servantName: Ron
+        favoriteFish: Tuna
     PaginatedResult:
       type: object
       properties:
