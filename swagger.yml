@@ -16,9 +16,9 @@ servers:
 - url: https://localhost:8080
 tags:
 - name: dog
-  description: Dogs API
+  description: Dogs endpoints
 - name: cat
-  description: Cats API  
+  description: Cats endpoints
 paths:
   /dogs:
     get:
