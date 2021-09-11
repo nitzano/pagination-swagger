@@ -47,6 +47,9 @@ paths:
       tags:
         - cat
       summary: Find all cats
+      parameters:
+        - { in: query, name: page, schema: { type: integer } }
+        - { in: query, name: per_page, schema: { type: integer } }
       responses:
         200:
           description: success
