@@ -2,9 +2,9 @@ openapi: 3.0.1
 
 info:
   title: Swagger pagination example
-  description: 'This is a sample server for the swagger pagination article'
+  description: "This is a sample server for the swagger pagination article"
   contact:
-    email: 16689354+nitzano@users.noreply.github.com 
+    email: 16689354+nitzano@users.noreply.github.com
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -13,18 +13,21 @@ externalDocs:
   description: find more
   url: https://github.com/nitzano/pagination-swagger
 servers:
-- url: https://localhost:8080
+  - url: https://localhost:8080
 tags:
-- name: dog
-  description: Dogs endpoints
-- name: cat
-  description: Cats endpoints
+  - name: dog
+    description: Dogs endpoints
+  - name: cat
+    description: Cats endpoints
 paths:
   /dogs:
     get:
       tags:
         - dog
       summary: Find all dogs
+      parameters:
+        - { in: query, name: page, schema: { type: number } }
+        - { in: query, name: per_page, schema: { type: number } }
       responses:
         200:
           description: success
@@ -32,13 +35,13 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/PaginatedResult'   
-                - type: object
-                  properties:
-                    results: 
-                      type: array
-                      items: 
-                        $ref: '#/components/schemas/Dog' 
+                  - $ref: "#/components/schemas/PaginatedResult"
+                  - type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Dog"
   /cats:
     get:
       tags:
@@ -51,13 +54,13 @@ paths:
             application/json:
               schema:
                 allOf:
-                - $ref: '#/components/schemas/PaginatedResult'   
-                - type: object
-                  properties:
-                    results: 
-                      type: array
-                      items: 
-                        $ref: '#/components/schemas/Cat' 
+                  - $ref: "#/components/schemas/PaginatedResult"
+                  - type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          $ref: "#/components/schemas/Cat"
 components:
   schemas:
     Dog:
@@ -87,10 +90,10 @@ components:
     PaginatedResult:
       type: object
       properties:
-        has_next: { type: boolean, example: true } 
+        has_next: { type: boolean, example: true }
         has_prev: { type: boolean, example: true }
         page: { type: number, example: 3 }
         pages: { type: number, example: 5 }
         per_page: { type: number, example: 20 }
         total: { type: number, example: 100 }
-        results: { type: array, items: {} }    
+        results: { type: array, items: {} }
